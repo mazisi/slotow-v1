@@ -11,9 +11,9 @@ class AlterationFilter{
 
   return DB::table('alterations')
         ->selectRaw("alterations.id, alterations.certification_issued_at,licences.belongs_to, licences.trading_name, licences.licence_number, licences.province, 
-        licences.licence_issued_at, alterations.logded_at,licences.board_region,licence_type_id,alterations.date, 
+        licences.licence_issued_at,licences.company_id,licences.people_id, alterations.logded_at,licences.board_region,licence_type_id,alterations.date, 
         alterations.status, licence_date, is_licence_active")
-        ->join('licences', 'licences.id' , '=', 'alterations.licence_id' )
+        ->join('licences', 'licences.id' , '=', 'alterations.licence_id')
 
       ->when($request,function($query){
           $query->when(request('month_from') && request('month_to'), function($query){
@@ -75,6 +75,8 @@ class AlterationFilter{
           'status',
           'board_region',
           'doc_type',
+          'people_id',
+          'company_id',
           'date',
           'licence_issued_at',
           'licence_type_id',

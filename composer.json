@@ -43,7 +43,8 @@
         },
         "files": [
             "app/Helpers/CheckFileExist.php",
-            "app/Helpers/connectionStatus.php"            
+            "app/Helpers/connectionStatus.php",
+            "app/Helpers/getLicenceHolder.php"             
         ]
     },
     "autoload-dev": {

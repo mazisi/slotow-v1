@@ -8,7 +8,7 @@ class NewAppReportFilter {
   function filter($request){
     
     return DB::table('licences')
-        ->selectRaw("licences.id, is_licence_active, belongs_to, trading_name,licence_type_id, licence_types.licence_type, province, licence_number,
+        ->selectRaw("licences.id, is_licence_active, belongs_to,company_id,people_id, trading_name,licence_type_id, licence_types.licence_type, province, licence_number,
                     deposit_paid_at, application_lodged_at, activation_fee_paid_at, licence_issued_at,client_paid_at,
                     client_paid_at,status, board_region,licence_date, is_new_app")
 
@@ -71,6 +71,8 @@ class NewAppReportFilter {
            ->get([
                'id',
                'is_licence_active',
+               'company_id',
+               'people_id',
                'trading_name',
                'licence_number',
                'licence_type_id',

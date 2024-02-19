@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\People;
+use App\Models\Company;
+
 /**
  * Retrieves the name of the licence holder based on the provided licence.
  *
@@ -8,9 +11,11 @@
  */
 function getLicenceHolder($licence){
     if($licence->belongs_to == 'Company'){
-        return $licence?->name;
+        $company = Company::find($licence->company_id);
+        return $company->name;
     }else if($licence->belongs_to == 'Individual'){
-        return $licence?->full_name;
+        $individual = People::find($licence->people_id);
+        return $individual->full_name;
     }
     return '';
 }

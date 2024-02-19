@@ -10,7 +10,7 @@ class TransferReportFilter {
     return DB::table('licence_transfers')
     ->selectRaw("licence_transfers.id, is_licence_active,licences.belongs_to, trading_name, licence_transfers.date, 
                  licence_transfers.lodged_at, licence_transfers.status, payment_to_liquor_board_at, 
-                 board_region,issued_at, delivered_at,province, licence_number")
+                 board_region,issued_at, delivered_at,province, licences.company_id,licences.people_id, licence_number")
 
     ->join('licences', 'licences.id' , '=', 'licence_transfers.licence_id')
 
@@ -69,6 +69,8 @@ class TransferReportFilter {
               'payment_to_liquor_board_at',
               'issued_at',
               'belongs_to',
+              'company_id',
+              'people_id',
               'is_licence_active',
               'status'
           ]);
