@@ -15,6 +15,7 @@ public static function export($request){
     $arrayData = array(
         array(
             'CURRENT TRADING NAME',
+            'LICENCE HOLDER',
             'GAU/GLB No',
             'PROVINCE/REGION',
             'DEPOSIT INVOICE',
@@ -38,6 +39,7 @@ public static function export($request){
   
              $data = [         
                        $arr_of_transfers[$i]->trading_name, 
+                       (new TransferExportController)->getTransferHolder($arr_of_transfers[$i]->transfered_to, $arr_of_transfers[$i]),
                        $arr_of_transfers[$i]->province == 'Gauteng' ? $arr_of_transfers[$i]->licence_number : '',
                        request('boardRegion') ? $arr_of_transfers[$i]->province.' - '.$arr_of_transfers[$i]->board_region : $arr_of_transfers[$i]->province,
                        '',
@@ -110,5 +112,11 @@ function getProofOfLodgiment($licence_transfer_id){
     return $proof_of_lodgiment;
 
 }
-
+function getTransferHolder($currentHolder, $transfer) {
+    if($currentHolder == 'Company'){
+        return $transfer->licence->company->trading_name;
+    }
+       return $transfer->licence->people->trading_name;
+    
+}
 }

@@ -8,7 +8,7 @@ class TransferReportFilter {
 
   function filter($request){
     return DB::table('licence_transfers')
-    ->selectRaw("licence_transfers.id, is_licence_active, trading_name, licence_transfers.date, 
+    ->selectRaw("licence_transfers.id, is_licence_active,licences.belongs_to, trading_name, licence_transfers.date, 
                  licence_transfers.lodged_at, licence_transfers.status, payment_to_liquor_board_at, 
                  board_region,issued_at, delivered_at,province, licence_number")
 
@@ -68,6 +68,7 @@ class TransferReportFilter {
               'lodged_at',
               'payment_to_liquor_board_at',
               'issued_at',
+              'belongs_to',
               'is_licence_active',
               'status'
           ]);

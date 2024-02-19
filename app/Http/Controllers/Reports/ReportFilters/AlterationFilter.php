@@ -10,7 +10,7 @@ class AlterationFilter{
  function filter($request){
 
   return DB::table('alterations')
-        ->selectRaw("alterations.id, alterations.certification_issued_at, licences.trading_name, licences.licence_number, licences.province, 
+        ->selectRaw("alterations.id, alterations.certification_issued_at,licences.belongs_to, licences.trading_name, licences.licence_number, licences.province, 
         licences.licence_issued_at, alterations.logded_at,licences.board_region,licence_type_id,alterations.date, 
         alterations.status, licence_date, is_licence_active")
         ->join('licences', 'licences.id' , '=', 'alterations.licence_id' )

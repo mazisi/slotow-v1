@@ -14,6 +14,7 @@ class NewAppExportController extends Controller
         $arrayData = array(
             array(
             'TRADING NAME',
+            'LICENCE HOLDER',
             'LICENCE TYPE',
             'LICENCE NUMBER',
             'PROVINCE/REGION',
@@ -41,7 +42,8 @@ class NewAppExportController extends Controller
                   
 
                $data = [ 
-                       $arr_of_licences[$i]->trading_name, 
+                       $arr_of_licences[$i]->trading_name,
+                       getLicenceHolder($arr_of_licences[$i]), 
                        $arr_of_licences[$i]->licence_type,
                        $arr_of_licences[$i]->licence_number,
                        request('boardRegion') ? $arr_of_licences[$i]->province.' - '.$arr_of_licences[$i]->board_region : $arr_of_licences[$i]->province,
