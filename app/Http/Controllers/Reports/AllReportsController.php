@@ -24,6 +24,7 @@ use App\Http\Controllers\Reports\ReportFilters\ExistingLicenceReportFilter;
 class AllReportsController extends Controller
 {
     public static function exportAll($request){
+        ini_set('memory_limit', '-1');
 
         $alterationData = array(
             array(                
