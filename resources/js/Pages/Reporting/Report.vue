@@ -242,13 +242,13 @@
   
     <button @click="resetFilters" class="btn btn-sm btn-primary">Reset All Filters</button>
   
-    <button v-if="form.variation == 'All'" @click="exportAll" :disabled="form.processing || !form.variation" 
+    <!-- <button v-if="form.variation == 'All'" @click="exportAll" :disabled="form.processing || !form.variation" 
       type="button" class="btn btn-success float-end">
       <span v-if="form.processing" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-      Generate All Reports</button>
+      Generate All Reports</button> -->
   
 
-      <button v-else @click="exportReport" :disabled="form.processing || !form.variation" 
+      <button  @click="exportReport" :disabled="form.processing || !form.variation" 
       type="button" class="btn btn-success float-end">
       <span v-if="form.processing" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
       Export</button>
