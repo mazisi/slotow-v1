@@ -7,6 +7,8 @@ import Banner from '../../components/Banner.vue';
 import { ref, computed } from 'vue';
 import  common from '../../common-js/common.js';
 import stages from './stages.js'
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
 export default {
   props: {
@@ -198,13 +200,26 @@ export default {
         form.temp_licence_stages = [];
         form.temp_licence_region = []
       }
+      const notify = (message) => {
+        if(props.success){
+          toast.success(message, {
+          autoClose: 2000,
+        });
+        
+        }else if(props.error){
+          toast.error(message, {
+          autoClose: 2000,
+        });
+        }
+      }
 
 return{
   computedBoardRegions,
   computedProvinces,
+  notify,
   limit,addClass,
   getType,
-  form,
+  form,toast,
   licenceTypes,
   handleDate,
   removeDate,
