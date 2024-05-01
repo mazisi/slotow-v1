@@ -489,7 +489,7 @@ class AllReportsController extends Controller
         $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
         $writer->save('php://output');
         // $writer->save(storage_path('app/public/All_Apps.Xlsx'));
-        // die;
+         die;
       
     }
 }
