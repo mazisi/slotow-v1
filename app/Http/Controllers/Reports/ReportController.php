@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Reports;
 use Inertia\Inertia;
 use App\Models\Email;
 use App\Models\People;
+use App\Models\Report;
 use App\Models\Company;
 use App\Models\Licence;
 use App\Models\LicenceType;
@@ -79,7 +80,12 @@ class ReportController extends Controller
       public function export(Request $request){
         switch ($request->variation) {
           case 'All':
-            AllReportsController::exportAll($request); 
+            Report::create([
+              'variation' => $request->variation,
+              'status' => 0,
+            ]);
+            // AllReportsController::exportAll($request);
+            return back()->with('success','Report is being generated. Please check your email');
             break;
             case 'Renewals':
               RenewalExportController::export($request); 

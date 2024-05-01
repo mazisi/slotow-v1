@@ -120,6 +120,23 @@ export default {
        form.selectedDates.splice(index, 1)
    }
 
+   const exportAll = () => {
+    form.get(`/export-report?variation=${form.variation}`, {
+            preserveScroll: true,
+            onSuccess: () => {
+              if (props.success) {
+                notifySuccess(props.success);
+            } else if (props.error) {
+                notifyError(props.error);
+            }
+              resetFilters();
+            },
+            replace: true,
+            preserveState: true
+            })
+   }
+
+
    const exportReport = () => {
     let url =
     `/export-report?variation=${form.variation}&month_from=${form.month_from}
@@ -195,7 +212,7 @@ return{
   people,
   companies,
   fetchNewAppWithStages,
-  years,
+  years,exportAll,
   resetFilters,
   computedRenewalStages,
   computedNewAppStages,
