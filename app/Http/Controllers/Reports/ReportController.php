@@ -80,12 +80,12 @@ class ReportController extends Controller
       public function export(Request $request){
         switch ($request->variation) {
           case 'All':
-            Report::create([
-              'variation' => $request->variation,
-              'status' => 0,
-            ]);
-            // AllReportsController::exportAll($request);
-            return back()->with('success','Report is being generated. Please check your email');
+            // Report::create([
+            //   'variation' => $request->variation,
+            //   'status' => 0,
+            // ]);
+            AllReportsController::exportAll($request);
+            //return back()->with('success','Report is being generated. Please check your email');
             break;
             case 'Renewals':
               RenewalExportController::export($request); 

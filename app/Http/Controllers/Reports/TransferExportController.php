@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Reports;
 
+use App\Models\People;
+use App\Models\Company;
 use App\Actions\ExportNotes;
+use App\Models\TransferDocument;
 use App\Actions\ExportToSpreadsheet;
 use App\Http\Controllers\Controller;
 use App\Actions\ReportShouldHaveStatusInterface;
 use App\Http\Controllers\Reports\ReportFilters\TransferReportFilter;
-use App\Models\TransferDocument;
 
 class TransferExportController extends Controller implements ReportShouldHaveStatusInterface
 {
@@ -114,9 +116,17 @@ function getProofOfLodgiment($licence_transfer_id){
 }
 function getTransferHolder($currentHolder, $transfer) {
     if($currentHolder == 'Company'){
-        return $transfer->licence->company->trading_name;
+        $company = Company::find($transfer->company_id);
+        if(!is_null($company)){
+            return $company->name;
+        }
+        return '';
     }
-       return $transfer->licence->people->trading_name;
+       $person  = People::find($transfer->people_id);
+       if(!is_null($person)){
+           return $person->full_name;
+       }
+       return '';
     
 }
 }
