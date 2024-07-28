@@ -25,10 +25,10 @@ class TemporalExportReportFilter {
                      $query->whereIn('temporal_licences.status',array_values(explode(",",request('temp_licence_stages'))));
                  })
                  ->when(request('activeStatus') === 'Active', function ($query) {
-                     $query->where('active',1);
+                     $query->where('temporal_licences.active',1);
                  })
                  ->when(request('activeStatus') === 'Inactive', function ($query) {
-                     $query->where('active',false);
+                     $query->where('temporal_licences.active',false);
                   })
 
                   ->when(!empty(request('temp_licence_region')), function ($query) {
@@ -88,10 +88,10 @@ class TemporalExportReportFilter {
                               $query->whereIn('temporal_licences.status',array_values(explode(",",request('temp_licence_stages'))));
                           })
                           ->when(request('activeStatus') === 'Active', function ($query) {
-                              $query->where('active',true);
+                              $query->where('temporal_licences.active',true);
                           })
                           ->when(request('activeStatus') === 'Inactive', function ($query) {
-                              $query->where('active',false);
+                              $query->where('temporal_licences.active',false);
                            })
 
                            ->when(!empty(request('temp_licence_region')), function ($query) {

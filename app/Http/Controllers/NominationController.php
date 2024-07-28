@@ -83,6 +83,8 @@ $scanned_app = NominationDocument::where('nomination_id',$nomination->id)->where
 $nomination_issued = NominationDocument::where('nomination_id',$nomination->id)->where('doc_type','Nomination Issued')->first();
 $nomination_delivered = NominationDocument::where('nomination_id',$nomination->id)->where('doc_type','Nomination Delivered')->first();
 $latest_renewal_licence_doc = LicenceDocument::where('document_type','Original-Licence')->where('licence_id',$nomination->licence_id)->first(['document_file']);
+//if there is no original licence doc, get the licence issued
+$licence_issued = LicenceDocument::where('document_type','Licence Issued')->where('licence_id',$nomination->licence_id)->first(['document_file']);
 
 return Inertia::render('Nominations/ViewIndividualNomination',[
         'nomination' => $nomination,
@@ -102,6 +104,7 @@ return Inertia::render('Nominations/ViewIndividualNomination',[
             'nomination_delivered' => $nomination_delivered,
             'scanned_app' => $scanned_app,
             'latest_renewal_licence_doc' => $latest_renewal_licence_doc,
+            'licence_issued' => $licence_issued,
             'liqour_board_requests' => $liqour_board_requests
     ]);
     }

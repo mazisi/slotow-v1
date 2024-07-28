@@ -35,6 +35,7 @@ export default{
       nomination_delivered: Object,//doc
       scanned_app: Object,//doc,
       latest_renewal_licence_doc: Object,
+      licence_issued: Object,
       liqour_board_requests: Object
   },
 

@@ -414,18 +414,22 @@ Action
     <div class="d-flex align-items-start flex-column justify-content-center">
       <h6 class="mb-0 text-sm">Latest renewal/ licence</h6>
        <p v-if="latest_renewal_doc !== null" class="mb-0 text-xs limit-file-name">{{ latest_renewal_doc.document_name }}</p>
-      <!-- <p v-else class="mb-0 text-xs text-danger">Document Not Uploaded</p> -->
     </div>
     <a v-if="latest_renewal_doc !== null" @click="deleteDocument(latest_renewal_doc.id)" class="mb-0 btn btn-link pe-3 ps-0 ms-auto" >
     <i class="fa fa-trash-o text-danger h5" aria-hidden="true"></i>
     </a>
 
-    <a v-if="latest_renewal_licence_doc !== null" class="mb-0 btn btn-link pe-3 ps-0 ms-auto" 
+    <a v-else-if="latest_renewal_licence_doc !== null" class="mb-0 btn btn-link pe-3 ps-0 ms-auto" 
     :href="`${$page.props.blob_file_path}${latest_renewal_licence_doc.document_file}`" target="_blank">
       <i class="fa fa-link h5" aria-hidden="true"></i>
     </a>
 
-    <a v-else-if="latest_renewal_doc == null" @click="getDocType(6,'Latest Renewal/Licence')" data-bs-toggle="modal" data-bs-target="#document-upload" class="mb-0 btn btn-link pe-3 ps-0 ms-auto" >
+    <a v-else-if="licence_issued !== null" class="mb-0 btn btn-link pe-3 ps-0 ms-auto" 
+    :href="`${$page.props.blob_file_path}${licence_issued.document_file}`" target="_blank">
+      <i class="fa fa-link h5" aria-hidden="true"></i>
+    </a>
+
+    <a v-else @click="getDocType(6,'Latest Renewal/Licence')" data-bs-toggle="modal" data-bs-target="#document-upload" class="mb-0 btn btn-link pe-3 ps-0 ms-auto" >
     <i class="fa fa-upload h5 " aria-hidden="true"></i></a>
 
   </li>  
@@ -434,10 +438,10 @@ Action
 
 <div class="text-end ">
   <button v-if="police_clearance_doc !== null
-&& certified_id_doc !== null
-&& attorney_doc !== null
-&& liquor_board !== null
-&& nomination_forms !== null" @click="mergeDocument" type="button" class="btn btn-sm btn-secondary mx-2">Compile &amp; Merge
+    && certified_id_doc !== null
+    && attorney_doc !== null
+    && liquor_board !== null
+    && nomination_forms !== null" @click="mergeDocument" type="button" class="btn btn-sm btn-secondary mx-2">Compile &amp; Merge
 </button>
 
 <Link v-else class="btn btn-sm btn-secondary mx-2 disabled">Compile &amp; Merge</Link>
