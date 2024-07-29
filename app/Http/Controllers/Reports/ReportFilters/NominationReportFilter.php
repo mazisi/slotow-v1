@@ -10,12 +10,12 @@ class NominationReportFilter {
 
     return DB::table('nominations')
 
-    ->selectRaw("nominations.id, licences.trading_name,licences.belongs_to, people.full_name, licences.licence_number, licences.province, 
+    ->selectRaw("nominations.id, licences.trading_name,licences.belongs_to, licences.licence_number, licences.province, 
                  nominations.payment_to_liquor_board_at, nominations.nomination_lodged_at, 
                   nomination_lodged_at,nomination_lodged_at, '' as date_granted , licences.company_id,licences.people_id,
                   nominations.status, nominations.nomination_issued_at,board_region, nominations.year, is_licence_active")
-              ->join('nomination_people', 'nomination_people.nomination_id' , '=', 'nominations.id' )
-              ->join('people', 'people.id' , '=', 'nomination_people.people_id' )
+            //   ->join('nomination_people', 'nomination_people.nomination_id' , '=', 'nominations.id' )
+            //   ->join('people', 'people.id' , '=', 'nomination_people.people_id' )
               ->join('licences', 'licences.id' , '=', 'nominations.licence_id' )
 
         ->when($request,function($query){
