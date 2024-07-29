@@ -232,7 +232,7 @@ class AllReportsController extends Controller
             array(
                 'TRADING NAME',
                 'LICENCE HOLDER',
-                'Client Name',
+                'YEAR',
                 'LICENCE NUMBER',
                 'PROVINCE/REGION',
                 'INVOICE NUMBER',
@@ -254,7 +254,7 @@ class AllReportsController extends Controller
                $data = [ 
                 $arr_of_nominations[$i]->trading_name, 
                 getLicenceHolder($arr_of_nominations[$i]),
-                $arr_of_nominations[$i]->full_name, 
+                $arr_of_nominations[$i]->year, 
                 $arr_of_nominations[$i]->licence_number, 
                 request('boardRegion') ? $arr_of_nominations[$i]->province.' - '.$arr_of_nominations[$i]->board_region : $arr_of_nominations[$i]->province,
                 '',
