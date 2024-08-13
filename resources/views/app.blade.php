@@ -169,9 +169,7 @@
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" ></script>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/solid.js" integrity="sha512-Si9vsi48jLsI+tB8bPEwrlYyGtRaGOq8eQ5ytoGX2A2LvRkYAwWcWfNkyZCzmGcvocaTYUtrlfs6uKAvWObjJg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
        
-
     </body>
 
 </html>
